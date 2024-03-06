@@ -6,31 +6,32 @@ import './App.css'
 import DataFetchingComponent from './app/DataFetchingComponent'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [apiUrl, setApiUrl] = useState('https://jsonplaceholder.typicode.com/posts');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <form onSubmit={handleSubmit} className="my-5 flex flex-col items-center">
+        <label htmlFor="apiUrl" className="mb-2 text-lg font-medium">Test an API Endpoint:</label>
+        <input
+          type="text"
+          id="apiUrl"
+          value={apiUrl}
+          onChange={(e) => setApiUrl(e.target.value)}
+          className="shadow appearance-none border rounded py-2 px-3 text-grey-darker mb-3"
+          placeholder="Enter API URL"
+        />
+        <button
+          type="submit"
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Fetch Data
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <DataFetchingComponent apiUrl="https://jsonplaceholder.typicode.com/posts" />
+      </form>
+      <DataFetchingComponent apiUrl={apiUrl} />
     </>
   )
 }
