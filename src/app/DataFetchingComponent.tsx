@@ -18,7 +18,7 @@ const DataFetchingComponent: React.FC<DataFetchingComponentProps> = ({ apiUrl })
       .then(response => response.json())
       .then(json => setData(json))
       .catch(error => console.error('Error fetching data:', error));
-  }, [apiUrl]); // Include apiUrl in the dependency array to refetch if the prop changes
+  }, [apiUrl]);
 
   return (
     <div className="flex flex-col items-center justify-center my-8">
