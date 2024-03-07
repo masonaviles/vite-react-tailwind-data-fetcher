@@ -24,7 +24,7 @@ const DataFetchingComponent: React.FC<DataFetchingComponentProps> = ({ apiUrl })
     <div className="flex flex-col items-center justify-center my-8">
         {data.map(item => (
             <div key={item.id} className="bg-white rounded-lg shadow-md p-6 mb-4 w-full max-w-xl">
-                <h2 className="font-bold text-xl mb-2">{item.title}</h2>
+                <h2 className="text-gray-700 font-bold text-xl mb-2">{item.title}</h2>
                 <p className="text-gray-700 text-base">{item.body}</p>
             </div>
         ))}
